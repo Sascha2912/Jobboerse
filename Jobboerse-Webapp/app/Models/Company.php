@@ -5,25 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Company extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['first_name', 'last_name', 'email', 'password', 'role'];
+    protected $fillable = ['name', 'street', 'house_number', 'postal_code', 'city', 'user_id'];
 
     // Beziehungen zu anderen Tabellen
-    public function companies()
+    public function user()
     {
-        return $this->hasMany(Company::class);
+        return $this->belongsTo(User::class);
     }
 
     public function jobs()
     {
         return $this->hasMany(Job::class);
-    }
-
-    public function job_users()
-    {
-        return $this->hasMany(Job_User::class);
     }
 }
