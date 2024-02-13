@@ -39,13 +39,15 @@ Route::put('/companies/{company}', 'CompanyController@update');
 Route::delete('/companies/{company}', 'CompanyController@destroy');
 
 // Categories
-Route::get('/categories', 'CategoryController@index');
-Route::get('/categories/create', 'CategoryController@create');
-Route::post('/categories', 'CategoryController@store');
-Route::get('/categories/{category}', 'CategoryController@show');
-Route::get('/categories/{category}/edit', 'CategoryController@edit');
-Route::put('/categories/{category}', 'CategoryController@update');
-Route::delete('/categories/{category}', 'CategoryController@destroy');
+Route::get('/categories', 'CategoryController@index')->name('categories.index');
+Route::get('/categories/create', 'CategoryController@create')->name('categories.create');
+Route::post('/categories', 'CategoryController@store')->name('categories.store');
+Route::get('/categories/{category}', 'CategoryController@show')->name('categories.show');
+Route::get('/categories/{category}/edit', 'CategoryController@edit')->name('categories.edit');
+Route::put('/categories/{category}', 'CategoryController@update')->name('categories.update');
+Route::delete('/categories/{category}', 'CategoryController@destroy')->name('categories.destroy');
+
+
 
 // Users
 Route::get('/users', 'UserController@index');
