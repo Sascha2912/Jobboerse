@@ -11,7 +11,7 @@ class UpdateCompanyRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,13 @@ class UpdateCompanyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+            'street' => 'required|string|max:255',
+            'house_number' => 'required|integer',
+            'postal_code' => 'required|string|max:10',
+            'city' => 'required|string|max:255',
+            // Überprüfen, ob der Benutzer existiert.
+            'user_id' => 'required|exists:users,id',
         ];
     }
 }

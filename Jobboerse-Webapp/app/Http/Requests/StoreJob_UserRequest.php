@@ -6,12 +6,12 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreJob_UserRequest extends FormRequest
 {
-    /**
+      /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('create', \App\Models\Job_User::class);;
     }
 
     /**
@@ -22,7 +22,8 @@ class StoreJob_UserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'job_id' => 'required|exists:jobs,id',
+            'user_id' => 'required|exists:users,id',
         ];
-    }
+    } 
 }

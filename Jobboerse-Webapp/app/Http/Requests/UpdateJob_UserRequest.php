@@ -11,7 +11,8 @@ class UpdateJob_UserRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        // Instanz der Job_User-Klasse übergeben, um die spezifische Bewerbung zu überprüfen.
+        return $this->user()->can('update', $this->route('job_user'));
     }
 
     /**
