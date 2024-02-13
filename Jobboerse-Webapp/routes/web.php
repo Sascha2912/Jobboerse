@@ -55,3 +55,12 @@ Route::get('/users/{user}', 'UserController@show');
 Route::get('/users/{user}/edit', 'UserController@edit');
 Route::put('/users/{user}', 'UserController@update');
 Route::delete('/users/{user}', 'UserController@destroy');
+
+// Job_Users
+Route::get('/job_users', 'JobUserController@index');
+Route::get('job_users/create', 'JobUserController@create');
+Route::post('job_users', 'JobUserController@store');
+Route::get('/job_users/{job_user}', 'JobUserController@show');
+Route::get('/job_users/{job_user}/edit', 'JobUserController@edit');
+Route::put('/job_users/{job_user}', 'JobUserController@update');
+Route::delete('/job_users/{job_user}', 'JobUserController@destroy');

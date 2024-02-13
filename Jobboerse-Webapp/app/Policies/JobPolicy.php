@@ -13,7 +13,8 @@ class JobPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        // Jeder User kann alle Stellenanzeigen anzeigen
+        return true;
     }
 
     /**
@@ -21,7 +22,7 @@ class JobPolicy
      */
     public function view(User $user, Job $job): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -29,7 +30,8 @@ class JobPolicy
      */
     public function create(User $user): bool
     {
-        //
+        // Business_Users und Admins können Jobs erstellen
+        return $user->role === 'business_user' || $user->role === 'admin';
     }
 
     /**
@@ -37,7 +39,8 @@ class JobPolicy
      */
     public function update(User $user, Job $job): bool
     {
-        //
+        // Der Besitzer eines Jobs oder ein Admin können Stellenanzeigen verändern.
+        return $user->id === $job->user_id || $user->role === 'admin';
     }
 
     /**
@@ -45,7 +48,8 @@ class JobPolicy
      */
     public function delete(User $user, Job $job): bool
     {
-        //
+        return $user->id === $job->user_id || $user->role === 'admin';
+
     }
 
     /**
@@ -53,7 +57,7 @@ class JobPolicy
      */
     public function restore(User $user, Job $job): bool
     {
-        //
+        return $user->role === 'admin';
     }
 
     /**
@@ -61,6 +65,6 @@ class JobPolicy
      */
     public function forceDelete(User $user, Job $job): bool
     {
-        //
+        return $user->role === 'admin';
     }
 }
