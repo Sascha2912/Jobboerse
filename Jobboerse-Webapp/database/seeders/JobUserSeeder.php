@@ -12,6 +12,6 @@ class JobUserSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Job_User::factory()->count(10)->create();
     }
 }
