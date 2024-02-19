@@ -40,12 +40,12 @@ Route::prefix('jobs')->group(function (){
 // Companies
 Route::prefix('companies')->group(function (){
     Route::get('/', [CompanyController::class, 'index'])->name('companies.index');
-    Route::get('/create', [CompanyController::class, 'create'])->nmae('companies.create');
+    Route::get('/create', [CompanyController::class, 'create'])->name('companies.create');
     Route::post('/', [CompanyController::class, 'store'])->name('companies.store');
     Route::get('/{company}', [CompanyController::class, 'show'])->name('companies.show');
     Route::get('/{company}/edit', [CompanyController::class, 'edit'])->name('companies.edit');
     Route::put('/{company}', [CompanyController::class, 'update'])->name('companies.update');
-    Route::delete('/{company}', [CompanyController::class, 'destroy'])->nmae('companies.destroy');
+    Route::delete('/{company}', [CompanyController::class, 'destroy'])->name('companies.destroy');
 });
 
 // Categories

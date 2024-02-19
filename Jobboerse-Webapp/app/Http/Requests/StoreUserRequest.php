@@ -11,7 +11,7 @@ class StoreUserRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return !Auth::check();
+        return true;
     }
 
     /**
@@ -29,5 +29,5 @@ class StoreUserRequest extends FormRequest
             'role' => 'required|string|in:admin,business_user,private_user',
         ];
     }
-    
+
 }

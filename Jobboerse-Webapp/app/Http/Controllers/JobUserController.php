@@ -49,7 +49,7 @@ class JobUserController extends Controller
      */
     public function edit(Job_User $job_User)
     {
-        return view('job_users.edit', ['job_user' => $job_user]);
+        return view('job_users.edit', ['job_user' => $job_User]);
     }
 
     /**
@@ -58,9 +58,9 @@ class JobUserController extends Controller
     public function update(UpdateJob_UserRequest $request, Job_User $job_User)
     {
         $validatedData = $request->validated();
-        $job_user->update($validatedData);
+        $job_User->update($validatedData);
 
-        return redirect('/job_users/' . $job_user->id);
+        return redirect('/job_users/' . $job_User->id);
     }
 
     /**
@@ -68,7 +68,7 @@ class JobUserController extends Controller
      */
     public function destroy(Job_User $job_User)
     {
-        $job_user->delete();
+        $job_User->delete();
 
         return redirect('/job_users');
     }

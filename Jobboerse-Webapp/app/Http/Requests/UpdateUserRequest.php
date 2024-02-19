@@ -25,17 +25,17 @@ class UpdateUserRequest extends FormRequest
         $userId = $this->route('user')->id;
         // Regeln für Nicht-Admins.
         $rulesForNonAdmins = [
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' .$userId,
+            'first_name' => 'string|max:255',
+            'last_name' => 'string|max:255',
+            'email' => 'string|email|max:255|unique:users,email,' .$userId,
             // Passwort ist optional und kann aktualisiert werden
             'password' => 'nullable|string|min:8',
         ];
-        
+
         $rulesForAdmins = array_merge($rulesForNonAdmins, [
             'role' => 'required|string|in:admin,business_user,private_user',
         ]);
 
-        return $this->user()->isAdmin() ? $rulesForAdmins : $rulesForNonAdmins;
+        return $rulesForNonAdmins;
     }
 }
